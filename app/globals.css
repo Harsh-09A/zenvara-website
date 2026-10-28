@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* Brand colours and fonts.
+   Use them in Tailwind like: bg-navy, text-ivory, border-gold, bg-beige, font-serif */
+@theme inline {
+  --color-ivory: #f2e9df;
+  --color-navy: #10143d;
+  --color-gold: #bd9551;
+  --color-beige: #e2d5c6;
+
+  /* Soft pastel colours for icon boxes, badges and card backgrounds */
+  --color-sage: #dbe8de;
+  --color-sky: #dbe7f3;
+  --color-blush: #f6e0da;
+  --color-sand: #f6ecd0;
+  --color-lavender: #e6e1f3;
+
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+}
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* Hero text rises in once when the page loads. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-rise {
+    animation: rise 0.9s ease-out both;
+  }
+  .hero-rise-2 {
+    animation: rise 0.9s ease-out 0.2s both;
+  }
+  .hero-rise-3 {
+    animation: rise 0.9s ease-out 0.4s both;
+  }
+}
+
+/* Underline that grows from the left on hover. Add the class "link-line" to any link. */
+.link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.3s ease;
+  padding-bottom: 2px;
+}
+.link-line:hover,
+.link-line[aria-current="page"] {
+  background-size: 100% 1px;
+}
